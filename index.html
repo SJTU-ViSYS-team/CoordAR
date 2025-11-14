@@ -179,33 +179,21 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Object 6D pose estimation, a crucial task for robotics and
-              augmented reality applications, becomes particularly chal-
-              lenging when dealing with novel objects whose 3D models
-              are not readily available. To reduce the dependency on 3D
-              models, recent studies have explored single-reference-based
-              estimation, which requires only a single reference view in-
-              stead of a full 3D model. However, existing methods rely
-              on real-valued coordinate regression, which suffers from lim-
-              ited global consistency due to the local nature of convo-
-              lutional architectures and faces challenges in symmetric or
-              occluded scenarios owing to a lack of uncertainty model-
-              ing. We present CoordAR, a novel autoregressive framework
-              for single-reference 6D pose estimation of unseen objects.
-              CoordAR formulates 3D-3D correspondences between the
-              reference and query views as a discrete token map, which
-              is obtained in an autoregressive and probabilistic manner.
-              To enable accurate correspondence regression, CoordAR in-
-              troduces 1) a novel coordinate map tokenization that en-
-              ables probabilistic prediction over discretized 3D space; 2)
-              a modality-decoupled encoding strategy that separately en-
-              codes RGB appearance and coordinate cues; and 3) an autore-
-              gressive transformer decoder conditioned on both position-
-              aligned query features and the partially generated token se-
-              quence. With these novel mechanisms, CoordAR signifi-
-              cantly outperforms existing methods on multiple benchmarks
-              and demonstrates strong robustness to symmetry, occlusion,
-              and other challenges in real-world tests.
+              Object 6D pose estimation, a crucial task for robotics and augmented reality applications, becomes
+              particularly challenging when dealing with novel objects whose 3D models are not readily available. To
+              reduce the dependency on 3D models, recent studies have explored single-reference-based estimation, which
+              requires only a single reference view instead of a full 3D model. However, existing methods rely on
+              real-valued coordinate regression, which suffers from limited global consistency due to the local nature
+              of convolutional architectures and faces challenges in symmetric or occluded scenarios owing to a lack of
+              uncertainty modeling. We present CoordAR, a novel autoregressive framework for single-reference 6D pose
+              estimation of unseen objects. CoordAR formulates 3D-3D correspondences between the reference and query
+              views as a discrete token map, which is obtained in an autoregressive and probabilistic manner. To enable
+              accurate correspondence regression, CoordAR introduces 1) a novel coordinate map tokenization that enables
+              probabilistic prediction over discretized 3D space; 2) a modality-decoupled encoding strategy that
+              separately encodes RGB appearance and coordinate cues; and 3) an autoregressive transformer decoder
+              conditioned on both position-aligned query features and the partially generated token sequence. With these
+              novel mechanisms, CoordAR significantly outperforms existing methods on multiple benchmarks and
+              demonstrates strong robustness to symmetry, occlusion, and other challenges in real-world tests.
             </p>
           </div>
         </div>
