@@ -3,3 +3,8 @@ Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose E
 
 
 The code is comming soon.
+
+TODOs for code release:
+- [ ] Dataset Interface
+- [ ] Model code
+- [ ] Trained weights
