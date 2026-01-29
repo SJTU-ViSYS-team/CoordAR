@@ -4,7 +4,10 @@ Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose E
 
 The code is comming soon.
 
-TODOs for code release:
+## 📣 News
+- **2026-01-29** We plan to realse our code in February.
+
+## 📋TODOs for code release
 - [ ] Dataset Interface
 - [ ] Model code
 - [ ] Trained weights
