@@ -1,0 +1,12 @@
+[
+    {
+        "cad_path": "data/MegaPose-ShapeNetCore/shapenetcorev2/models_orig/03211117/1063cfe209bdaeb340ff33d80c1d7d1e/models/model_normalized.obj",
+        "obj_dir": "data/MegaPose-ShapeNetCore/shapenetcorev2/templates/000000",
+        "texture": "no_tless_like"
+    },
+    {
+        "cad_path": "data/MegaPose-ShapeNetCore/shapenetcorev2/models_orig/03211117/10953ef61c72aacccd14781dae25affc/models/model_normalized.obj",
+        "obj_dir": "data/MegaPose-ShapeNetCore/shapenetcorev2/templates/000001",
+        "texture": "no_tless_like"
+    }
+]

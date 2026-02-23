@@ -1,0 +1,20 @@
+_target_: src.data.bop.few_shot_dataset.BOPFewShot
+instance_ds:
+  _target_: src.data.bop.instance_dataset.BOPInstanceDataset
+  scene_ds:
+    _target_: src.data.bop.scene_dataset.BOPSceneDataset
+    datasets_path: data/BOP
+    dataset: lm
+    split: test
+    only_bop19_test: true
+  obj_ds:
+    _target_: src.data.megapose.obj_ds.bop_object_dataset.BOPObjectDataset
+    ds_dir_str: data/BOP/lm/models
+  dzi_config:
+    dzi_type: uniform
+    dzi_pad_scale: 1.5
+    dzi_scale_ratio: 0.0
+    dzi_shift_ratio: 0.0
+  zoom_size: ${zoom_size}
+num_ref: 1
+ref: first_frame
