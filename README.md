@@ -11,7 +11,7 @@
 
 </div>
 
-Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose Estimation of Novel Objects via Autoregressive Coordinate Map Generation"
+Official implementation of AAAI2026 oral paper "CoordAR: One-Reference 6D Pose Estimation of Novel Objects via Autoregressive Coordinate Map Generation"
 
 ## 📣 News
 - **2026-02-23** We release our code.
@@ -73,7 +73,7 @@ logs/
 ├── checkpoints
     ├──coordar
         ├──model.pth
-    ├──coordar
+    ├──tokenizer
         └──last.ckpt
 ```
 ## Reproduce the results
