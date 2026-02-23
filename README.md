@@ -17,8 +17,8 @@ Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose E
 - **2026-01-29** We plan to realse our code in February.
 
 ## 📋TODOs for code release
-- [ ] Dataset Interface
-- [ ] Model code
+- [x] Dataset Interface
+- [x] Model code
 - [ ] Trained weights
 
 ## Overview
@@ -29,13 +29,6 @@ single reference RGB-D  image instead of a full 3D model. Our method formulates 
 the reference and query views as a token
 map, which is decoded autoregressively in a probabilistic
 manner. 
-
-<img width="400"  alt="image" src="https://github.com/user-attachments/assets/c533dafe-aba9-402f-abb1-ccf251052735" />
-
-The network architecture of CoordAR.
-
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/3b4915d4-b852-45b0-901b-295067cbbcbd" />
-
 
 ## Installation
 
