@@ -6,15 +6,14 @@
 <a href="https://pytorchlightning.ai/"><img alt="Lightning" src="https://img.shields.io/badge/-Lightning-792ee5?logo=pytorchlightning&logoColor=white"></a>
 <a href="https://hydra.cc/"><img alt="Config: Hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"></a>
 <a href="https://github.com/ashleve/lightning-hydra-template"><img alt="Template" src="https://img.shields.io/badge/-Lightning--Hydra--Template-017F2F?style=flat&logo=github&labelColor=gray"></a><br>
-[![Paper](https://img.shields.io/badge/paper-arxiv.2511.12919-B31B1B.svg)](https://www.arxiv.org/abs/2511.12919)
-[![Conference](https://img.shields.io/badge/AAAI-2026-4b44ce.svg)](https://aaai.org/conference/aaai/aaai-26/)
+[![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
+[![Conference](http://img.shields.io/badge/AnyConference-year-4b44ce.svg)](https://papers.nips.cc/paper/2020)
 
 </div>
 
 Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose Estimation of Novel Objects via Autoregressive Coordinate Map Generation"
 
 ## 📣 News
-- **2026-02-23** We release our code.
 - **2026-01-29** We plan to realse our code in February.
 
 ## 📋TODOs for code release
@@ -70,8 +69,10 @@ data/
 Download our trained weight from [\[cloud storage\]](https://path_to_checkpoints), code: `1sks`, put it into [./logs/checkpoints/last.ckpt]()
 ## Reproduce the results
 ```bash
-# run predict
+# run predict with our trained model
 export `<.env.example`
+python src/predict.py experiment=coordar/ar_paper logger=csv
+# or with model trained by yourself
 python src/predict.py experiment=coordar/ar_paper logger=csv ckpt_path=./logs/checkpoints/last.ckpt
 ```
 
