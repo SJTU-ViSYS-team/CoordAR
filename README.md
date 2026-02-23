@@ -20,7 +20,7 @@ Official implementation of AAAI2026 Oral paper "CoordAR: One-Reference 6D Pose E
 ## 📋TODOs for code release
 - [x] Dataset Interface
 - [x] Model code
-- [ ] Trained weights
+- [x] Trained weights
 
 ## Overview
 
@@ -67,14 +67,22 @@ data/
 
 
 ## Download Checkpoints
-Download our trained weight from [\[cloud storage\]](https://path_to_checkpoints), code: `1sks`, put it into [./logs/checkpoints/last.ckpt]()
+Download our trained models from [\[Baidu Wangpan\]](https://pan.baidu.com/s/1wSgoCB5VIhtC2jDLYlVWrg), code: `1sks`, put it into [./logs](). Prepare weight folder like this:
+```
+logs/
+├── checkpoints
+    ├──coordar
+        ├──model.pth
+    ├──coordar
+        └──last.ckpt
+```
 ## Reproduce the results
 ```bash
 # run predict with our trained model
 export `<.env.example`
 python src/predict.py experiment=coordar/ar_paper logger=csv
 # or with model trained by yourself
-python src/predict.py experiment=coordar/ar_paper logger=csv ckpt_path=./logs/checkpoints/last.ckpt
+python src/predict.py experiment=coordar/ar_paper logger=csv ckpt_path=path_to_ckpt
 ```
 
 You can override any parameter from command line like this to switch between multiple datasets.
