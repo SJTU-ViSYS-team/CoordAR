@@ -1,0 +1,1 @@
+./src/utils/lib3d/isaacsim.sh logs/rendering/template_tasks.example.json

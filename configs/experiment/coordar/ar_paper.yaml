@@ -1,0 +1,90 @@
+# @package _global_
+
+# to execute this experiment run:
+# python src/train.py experiment=coordar/ar_paper logger=tensorboard
+# python src/eval.py experiment=coordar/ar_paper logger=csv
+# python src/predict.py  experiment=coordar/ar_paper logger=csv data.batch_size=1
+
+defaults:
+  - override /data: coordar
+  - override /model: coordar
+  - override /model/estimator: ar_paper
+  - override /callbacks: default
+  - override /trainer: gpu
+  - override /logger: wandb
+  - _self_
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+task_name: "pose_fewshot"
+tags: ["AR"]
+
+seed: 12345
+
+trainer:
+  max_epochs: 40
+  # gradient_clip_val: 10
+  accelerator: gpu
+  devices: auto
+  check_val_every_n_epoch: 1
+  limit_train_batches: 20000
+  limit_val_batches: 50
+  # limit_test_batches: 10
+  # limit_predict_batches: 5
+  strategy: ddp_find_unused_parameters_true
+  accumulate_grad_batches: 1
+  log_every_n_steps: 50
+  # num_sanity_val_steps: 100
+
+data:
+  batch_size: 8
+
+logger:
+  wandb:
+    project: "coordar"
+    tags: ${tags}
+    save_dir: "logs/wandb"
+
+callbacks:
+  early_stopping:
+    monitor: "val/mssd_recall"
+    patience: 1000
+    mode: "max"
+
+  model_checkpoint:
+    monitor: val/mssd_recall
+    filename: "{epoch:03d}-{val/mssd_recall:.4f}-{step}"
+    mode: max
+  
+  # ema:
+  #   _target_: src.utils.lightning_callbacks.ema.EMACallback
+  #   decay: 0.9999
+
+model:
+  optimizer_init:
+    lr: 1e-4
+  test_vis_step: 10
+  predict_vis_step: 100
+  estimator:
+    pose_selecton: "best"  # Options: "IoU", "AP", "best"
+    # pose_method: conv_net
+    # pose_method: ransac_pnp
+    # loss_weights:
+      # mar_loss: 0 # step 1, freeze mar
+      # roc_loss: 0 # step 1, freeze roc
+      # mask_loss: 0 # step 1, freeze mask
+      # recon_loss: 1.0 # step 2, freeze tokenlizer
+      # kl_loss: 0 # step 2, freeze tokenlizer
+    memo:
+      geo_head:
+        num_iter: 16
+        reorder: false
+      # freeze_components: ["nocs_head", "reg_head"] # step 1, freeze mar
+      # freeze_components: ["value_encoder"] # step 2, freeze tokenlizers
+    ckpt_loader:
+      base_ckpt: "logs/checkpoints/coordar/model.pth"
+      base_prefix: "estimator."
+      target_prefix: ""
+      exclude_layers: []
+      base_strict: true

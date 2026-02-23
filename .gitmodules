@@ -1,0 +1,4 @@
+[submodule "src/third_party/bop_toolkit"]
+	path = src/third_party/bop_toolkit
+	url = https://github.com/zuodexin/bop_toolkit.git
+	branch = dexin

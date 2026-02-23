@@ -1,0 +1,61 @@
+_target_: src.models.coordar.estimator.NovelEstimator
+
+memo:
+  _target_: src.models.coordar.coord_net.MemoCoordMap
+  decode_steps: 8
+  decode_heads: 16
+  embed_dim: 768
+  image_size: ${zoom_size}
+  patch_size: 16
+  key_encoder:
+    _target_: src.models.coordar.backbones.backbone.Backbone
+    init_args:
+      model_name: dinov2
+      name: dinov2_vitb14
+      target_size: [14, 14]
+    bchw2blc: true
+  value_encoder:
+    _target_: src.models.coordar.backbones.backbone.Backbone
+    init_args:
+      model_name: timm/vit_base_patch16_224
+      in_chans: 4
+      return_nodes:
+        norm: pre_logits
+    bchw2blc: false
+    remove_cls: true
+  reg_head:
+    _target_: diffusers.models.autoencoders.vae.Decoder
+    in_channels: 768
+    out_channels: 4
+    up_block_types: ["UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D"]
+    layers_per_block: 1
+    block_out_channels: [32, 64, 128, 256, 512]
+  geo_head:
+    _target_: src.models.coordar.heads.geo_ar.GeoARHead
+    in_dim: 768
+    tokenizer:
+      _target_: src.models.tokenizer.model.Tokenizer
+      vq_args:
+        num_vq_embeddings: 8192
+        latent_channels: 768
+        layers_per_block: 1
+        down_block_types: ["DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D"]
+        up_block_types: ["UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D"]
+        block_out_channels: [32, 64, 128, 256, 512]
+        norm_num_groups: 8
+      ckpt_loader:
+        _target_: src.utils.ckpt_loader.CkptLoader
+        base_ckpt: "logs/checkpoints/tokenizer/last.ckpt"
+        base_prefix: "tokenizer."
+        target_prefix: ""
+        base_strict: true
+        exclude_layers: []
+loss_weights:
+  recon_loss: 1.0
+ckpt_loader:
+  _target_: src.utils.ckpt_loader.CkptLoader
+  base_ckpt: ""
+  base_prefix: "estimator."
+  base_strict: False
+  target_prefix: ""
+  exclude_layers: []

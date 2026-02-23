@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - data: mnist # choose datamodule with `test_dataloader()` for evaluation
+  - model: mnist
+  - callbacks: default
+  - logger: null
+  - trainer: default
+  - paths: default
+  - extras: default
+  - hydra: default
+  - experiment: null
+  - _self_
+
+task_name: "eval"
+
+tags: ["dev"]
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: null
+
+
+zoom_size: [224, 224]
+diameter: "estimated"  # options: "measured", "estimated", "oracle"

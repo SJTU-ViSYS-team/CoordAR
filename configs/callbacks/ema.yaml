@@ -1,0 +1,3 @@
+ema:
+  _target_: src.utils.lightning_callbacks.ema.EMACallback
+  decay: 0.9999

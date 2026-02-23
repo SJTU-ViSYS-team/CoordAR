@@ -1,0 +1,5 @@
+# https://lightning.ai/docs/pytorch/latest/api/lightning.pytorch.callbacks.ProgressBar.html#lightning.pytorch.callbacks.ProgressBar
+
+tqdm_progress_bar:
+  _target_: lightning.pytorch.callbacks.TQDMProgressBar
+

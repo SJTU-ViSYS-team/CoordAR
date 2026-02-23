@@ -1,0 +1,17 @@
+{
+  "1": {"gt_id": 0, "im_id": 15, "scene_id": 1},
+  "2": {"gt_id": 0, "im_id": 3, "scene_id": 2},
+  "3": {"gt_id": 0, "im_id": 0, "scene_id": 3},
+  "4": {"gt_id": 0, "im_id": 20, "scene_id": 4},
+  "5": {"gt_id": 0, "im_id": 0, "scene_id": 5},
+  "6": {"gt_id": 0, "im_id": 0, "scene_id": 6},
+  "7": {"gt_id": 0, "im_id": 10, "scene_id": 7},
+  "8": {"gt_id": 0, "im_id": 4, "scene_id": 8},
+  "9": {"gt_id": 0, "im_id": 3, "scene_id": 9},
+  "10": {"gt_id": 0, "im_id": 15, "scene_id": 10},
+  "11": {"gt_id": 0, "im_id": 11, "scene_id": 11},
+  "12": {"gt_id": 0, "im_id": 9, "scene_id": 12},
+  "13": {"gt_id": 0, "im_id": 0, "scene_id": 13},
+  "14": {"gt_id": 0, "im_id": 8, "scene_id": 14},
+  "15": {"gt_id": 0, "im_id": 1, "scene_id": 15}
+}

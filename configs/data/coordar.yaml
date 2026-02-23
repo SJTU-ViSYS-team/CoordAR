@@ -1,0 +1,16 @@
+defaults:
+  - data_train: bop_lm_train # replace this with your training set
+  - data_val: bop_lm_val
+  - data_test: bop_lm_test
+  - data_predict: bop_ycbv_predict # change this with another config in configs/data/data_predict
+_target_: src.data.base_datamodule.BaseDataModule
+
+batch_size: 16 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+num_workers: 12
+pin_memory: False
+collate_importer:
+  _target_: src.data.collate_importer.CollateImporter
+  train:  src.data.collate_importer.default_collate_fn
+  val:  src.data.collate_importer.default_collate_fn
+  test:  src.data.collate_importer.default_collate_fn
+  predict:  src.data.collate_importer.default_collate_fn

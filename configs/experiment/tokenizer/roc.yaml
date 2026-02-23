@@ -1,0 +1,78 @@
+# @package _global_
+
+# to execute this experiment run:
+# python src/train.py experiment=tokenizer/roc logger=tensorboard
+# python src/eval.py experiment=tokenizer/roc logger=[] ckpt_path=logs/train/runs/2025-05-27_20-15-19/checkpoints/last.ckpt
+# python src/predict.py experiment=tokenizer/roc logger=[] ckpt_path=logs/train/runs/2025-05-27_20-15-19/checkpoints/last.ckpt
+
+defaults:
+  - override /data: roc_tokenizer
+  - override /model: tokenizer_module
+  - override /callbacks: default
+  - override /trainer: gpu
+  - override /logger: wandb
+  - _self_
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+task_name: "roc_tokenization"
+tags: ["tokenizer"]
+
+seed: 12345
+
+trainer:
+  max_epochs: 20
+  accelerator: gpu
+  devices: auto
+  check_val_every_n_epoch: 1
+  limit_train_batches: 2000
+  limit_val_batches: 5
+  strategy: ddp_find_unused_parameters_true
+  accumulate_grad_batches: 1
+  log_every_n_steps: 50
+  # num_sanity_val_steps: 100
+  # limit_test_batches: 10
+  # limit_predict_batches: 10
+
+data:
+  batch_size: 8
+
+logger:
+  wandb:
+    project: "coord_tokenizer"
+    tags: ${tags}
+    save_dir: "logs/wandb"
+
+callbacks:
+  early_stopping:
+    monitor: "val/loss"
+    patience: 1000
+    mode: "min"
+
+  model_checkpoint:
+    monitor: val/loss
+    filename: "{epoch:03d}-{val/loss:.4f}-{step}"
+    mode: min
+  
+  # ema:
+  #   _target_: src.utils.lightning_callbacks.ema.EMACallback
+  #   decay: 0.9999
+
+model:
+  optimizer_init:
+    lr: 1e-4
+  # test_vis_step: 1
+  # predict_vis_step: 1
+  tokenizer:
+    key: query_rel_roc
+    loss_weights:
+      recon_loss: 1.0
+      vq_loss: 1.0
+    ckpt_loader:
+      base_ckpt: ""
+      base_prefix: "tokenizer."
+      target_prefix: ""
+      # exclude_layers:
+      #   - vqgan_loss.discriminator.main.11.weight
+      base_strict: false
