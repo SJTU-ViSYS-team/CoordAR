@@ -13,6 +13,18 @@
 
 Official implementation of AAAI2026 oral paper "CoordAR: One-Reference 6D Pose Estimation of Novel Objects via Autoregressive Coordinate Map Generation"
 
+```
+@inproceedings{zuo2026coordar,
+  title={CoordAR: One-Reference 6D Pose Estimation of Novel Objects via Autoregressive Coordinate Map Generation},
+  author={Zuo, Dexin and Li, Ang and Wang, Wei and Yu, Wenxian and Zou, Danping},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={16},
+  pages={14122--14130},
+  year={2026}
+}
+```
+
 ## 📣 News
 - **2026-02-23** We release our code.
 - **2026-01-29** We plan to realse our code in February.
