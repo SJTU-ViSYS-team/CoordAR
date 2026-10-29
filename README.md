@@ -79,7 +79,8 @@ data/
 
 
 ## Download Checkpoints
-Download from [huggingface](https://huggingface.co/dx1111/CoordAR/tree/main).
+Download from [HuggingFace](https://huggingface.co/dx1111/CoordAR/tree/main).
+
 Prepare weight folder like this:
 ```
 logs/
