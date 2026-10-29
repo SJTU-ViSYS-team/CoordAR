@@ -79,7 +79,7 @@ data/
 
 
 ## Download Checkpoints
-Download our trained models from [\[Baidu Wangpan\]](https://pan.baidu.com/s/1wSgoCB5VIhtC2jDLYlVWrg), code: `1sks`, put it into [./logs](). Prepare weight folder like this:
+Download from [huggingface](https://huggingface.co/dx1111/CoordAR/tree/main) Prepare weight folder like this:
 ```
 logs/
 ├── checkpoints
